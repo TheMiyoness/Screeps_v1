@@ -1,5 +1,7 @@
 /** Here we list out the other places our code exists **/
 var createHarvester = require('create.harvester');
+var createUpgrader = require('create.upgrader');
+var createBuilder = require('create.builder');
 
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
@@ -17,13 +19,30 @@ module.exports.loop = function () {
         }
     }
     
+    /** Here we are building lists of each of our creep types **/
+    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+    var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
+    
     
     /** If we have fewer than 2 harvesters, run the code that makes more **/
-    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     /** If you want more than 2 Harvesters at a time, edit the 2 here! **/
     if(harvesters.length < 2) {
         createHarvester.run();
     }
+    
+    /** If we have fewer than 1 upgrader, run the code that makes more **/
+    /** If you want more than 1 upgrader at a time, edit the 1 here! **/
+    if(upgraders.length < 1) {
+        createUpgrader.run();
+    }
+    
+    /** If we have fewer than 1 builder, run the code that makes more **/
+    /** If you want more than 1 builder at a time, edit the 1 here! **/
+    if(builders.length < 1) {
+        createBuilder.run();
+    }
+
 
     /** Here, we sort the creeps by their role, and order them to do the code in the module that matches their role **/
     for(var name in Game.creeps) {
