@@ -1,7 +1,19 @@
+/** Here we list out the other places our code exists **/
+var createHarvester = require('create.harvester');
+
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 
+/** This is the main code that runs, we can call other code from modules in here too **/
 module.exports.loop = function () {
+    
+    /** If we have fewer than 2 harvesters, run the code that makes more **/
+    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    if(harvesters.length < 2) {
+        createHarvester.run();
+    }
+
+    /** Here, we sort the creeps by their role, and order them to do the code in the module that matches their role **/
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'harvester') {
