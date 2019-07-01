@@ -11,7 +11,7 @@ var createHarvester = {
 			}
 		);
         
-		console.log('Spawning new harvester: ' + newName);
+		console.log('Trying to Spawn new harvester: ' + newName);
 	}
 };
 module.exports = createHarvester;
