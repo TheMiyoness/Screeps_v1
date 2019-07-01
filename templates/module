@@ -7,6 +7,8 @@ var MODULE_NAME_HERE = {
 };
 
 module.exports = MODULE_NAME_HERE;
+
+
 /** DON'T FORGET TO ADD:
 var MODULE_NAME_HERE = require('MODULE.NAME');
 TO THE TOP OF YOUR MAIN CODE FILE
