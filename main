@@ -7,6 +7,16 @@ var roleUpgrader = require('role.upgrader');
 /** This is the main code that runs, we can call other code from modules in here too **/
 module.exports.loop = function () {
     
+    /** the game will keep the memory of dead creeps and we don't want to use our memory on that **/
+    /** so this code clears that memory to free up more memory for new creeps **/
+    for(var name in Memory.creeps) {
+        if(!Game.creeps[name]) {
+            delete Memory.creeps[name];
+            console.log('Clearing non-existing creep memory:', name);
+        }
+    }
+    
+    
     /** If we have fewer than 2 harvesters, run the code that makes more **/
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     if(harvesters.length < 2) {
