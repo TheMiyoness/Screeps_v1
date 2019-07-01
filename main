@@ -19,6 +19,7 @@ module.exports.loop = function () {
     
     /** If we have fewer than 2 harvesters, run the code that makes more **/
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    /** If you want more than 2 Harvesters at a time, edit the 2 here! **/
     if(harvesters.length < 2) {
         createHarvester.run();
     }
