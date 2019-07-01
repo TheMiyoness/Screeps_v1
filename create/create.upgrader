@@ -1,0 +1,17 @@
+var createUpgrader = {
+    run: function() {
+	      
+        var newName = 'Upgrader' + Game.time;
+        
+        Game.spawns['Spawn1'].spawnCreep(
+			[WORK,CARRY,MOVE], /** Here is where you edit what kind of stats the upgrader has **/
+			newName,
+			{memory:
+				{role: 'upgrader'}
+			}
+		);
+        
+		console.log('Trying to spawn new upgrader: ' + newName);
+	}
+};
+module.exports = createUpgrader;
