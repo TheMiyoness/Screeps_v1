@@ -1,4 +1,8 @@
-/** Here we list out the other places our code exists **/
+/** Here we list out the other places our code exists
+
+https://github.com/thPion/Screeps-Nooby-Guide/blob/master/prototype.creep.js
+
+https://github.com/beije/screeps-ai/tree/master/src**/
 var createHarvester = require('create.harvester');
 var createUpgrader = require('create.upgrader');
 var createBuilder = require('create.builder');
